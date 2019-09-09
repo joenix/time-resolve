@@ -1,0 +1,26 @@
+{
+  "name": "time-resolve",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "time",
+    "timeformat",
+    "timeformatter",
+    "time-format",
+    "time-formatter",
+    "timeparse",
+    "timeparser",
+    "time-parse",
+    "time-parser",
+    "timeresolve",
+    "timeresolver",
+    "time-resolve",
+    "time-resolver"
+  ],
+  "author": "joenix",
+  "license": "MIT"
+}
