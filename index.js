@@ -1,4 +1,8 @@
-module.exports = (time, fmt) => {
+export default (time, fmt) => {
+  if (time.constructor !== Date) {
+    time = new Date(time);
+  }
+
   const rule = {
     "M+": time.getMonth() + 1,
     "d+": time.getDate(),
@@ -10,20 +14,14 @@ module.exports = (time, fmt) => {
   };
 
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(
-      RegExp.$1,
-      (time.getFullYear() + "").substr(4 - RegExp.$1.length)
-    );
+    fmt = fmt.replace(RegExp.$1, (time.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
 
   for (let k in rule) {
-    if (new RegExp("(" + k + ")").test(fmt)) {
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1
-          ? rule[k]
-          : ("00" + rule[k]).substr(("" + rule[k]).length)
-      );
+    const v = rule[k];
+
+    if (new RegExp(`(${k})`).test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? v : `00${v}`.substr(`${v}`.length));
     }
   }
 
